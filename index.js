@@ -9,13 +9,22 @@ const app = express();
 connectDB();
 
 // Middleware
+app.use(express.json());
+
+// Configuración de CORS
+const allowedOrigins = [process.env.FRONTEND_URL];
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL, // Asegúrate de que FRONTEND_URL esté configurado en tu .env
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST'],
   credentials: true,
 }));
-app.use(express.json());
-
 
 // Health check endpoint
 app.get('/healthcheck', (req, res) => {
@@ -23,7 +32,7 @@ app.get('/healthcheck', (req, res) => {
 });
 
 // Rutas
-app.use('/api', require('./routes/contact')); // Asegúrate de que la ruta sea correcta
+app.use('/api', require('./routes/contact'));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
