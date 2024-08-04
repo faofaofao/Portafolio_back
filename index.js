@@ -23,7 +23,7 @@ app.get('/healthcheck', (req, res) => {
 });
 
 // Rutas
-app.use('api/contact', require('./routes/contact')); // Asegúrate de que la ruta sea correcta
+app.use('/api', require('./routes/contact')); // Asegúrate de que la ruta sea correcta
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

@@ -3,7 +3,7 @@ const router = express.Router();
 const Contact = require('../models/Contact');
 const nodemailer = require('nodemailer');
 
-router.post('api/contact', async (req, res) => {
+router.post('/contact', async (req, res) => {
   const { name, email, subject, message } = req.body;
 
   try {
