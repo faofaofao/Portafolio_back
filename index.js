@@ -16,6 +16,12 @@ app.use(cors({
 }));
 app.use(express.json());
 
+
+// Health check endpoint
+app.get('/healthcheck', (req, res) => {
+  res.status(200).json({ status: 'OK' });
+});
+
 // Rutas
 app.use('api/contact', require('./routes/contact')); // Asegúrate de que la ruta sea correcta
 
