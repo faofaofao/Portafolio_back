@@ -12,7 +12,7 @@ connectDB();
 app.use(express.json());
 
 // Configuración de CORS
-const allowedOrigins = process.env.FRONTEND_URL;
+const allowedOrigins = [process.env.FRONTEND_URL];
 
 app.use(cors({
   origin: function (origin, callback) {
