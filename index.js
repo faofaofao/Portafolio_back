@@ -6,8 +6,11 @@ require('dotenv').config();
 const app = express();
 
 // Conectar a la base de datos
-connectDB();
-
+connectDB().then(() => {
+  console.log('Conexión a la base de datos exitosa');
+}).catch(err => {
+  console.error('Error al conectar a la base de datos:', err);
+});
 // Middleware
 app.use(express.json());
 
