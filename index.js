@@ -16,10 +16,10 @@ app.use(express.json());
 
 // Configuración de CORS
 
-
-
-// URL del frontend en Vercel
 app.use(cors());
+
+
+
 
 // Health check endpoint
 app.get('/healthcheck', (req, res) => {
