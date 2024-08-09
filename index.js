@@ -19,21 +19,7 @@ app.use(express.json());
 
 
 // URL del frontend en Vercel
-const allowedOrigins = [`${FRONTEND_URL}`,'http://localhost:3000'];
-
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST'], // Permitir solo solicitudes GET y POST
-  credentials: true, // Habilitar el envío de cookies y cabeceras de autorización
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 // Health check endpoint
 app.get('/healthcheck', (req, res) => {
