@@ -20,7 +20,6 @@ app.use(cors());
 
 
 
-
 // Health check endpoint
 app.get('/healthcheck', (req, res) => {
   res.status(200).send('ok');
